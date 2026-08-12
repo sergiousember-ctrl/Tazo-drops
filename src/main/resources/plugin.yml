@@ -9,7 +9,9 @@ commands:
     description: Recarga la configuración de TazoDrops.
     usage: /tazodrops reload
     permission: tazodrops.admin
+  tazos:
+    description: Abre tu álbum de tazos coleccionados.
+    usage: /tazos
 permissions:
   tazodrops.admin:
     default: op
-
