@@ -58,6 +58,9 @@ public class SpiderDeathListener implements Listener {
             entity.getWorld().dropItemNaturally(entity.getLocation(), tazoItem);
         }
 
-        String message = plugin.getConfig().getString("win-message", "&6¡Obtuviste un Tazo #%id% - %name%!")
+        String message = plugin.getConfig().getString("win-message", "&6Obtuviste un Tazo numero %id% - %name%!")
                 .replace("%id%", String.valueOf(tazo.getId()))
                 .replace("%name%", tazo.getName());
+        killer.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+    }
+}
