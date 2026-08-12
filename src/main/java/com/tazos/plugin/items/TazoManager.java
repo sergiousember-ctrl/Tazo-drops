@@ -72,7 +72,7 @@ public class TazoManager {
             PlayerTextures textures = profile.getTextures();
             textures.setSkin(new URL(tazo.getImageUrl()));
             profile.setTextures(textures);
-            meta.setPlayerProfile(profile);
+            meta.setOwnerProfile(profile);
         } catch (MalformedURLException e) {
             plugin.getLogger().warning("URL de imagen inválida para el tazo #" + tazo.getId() + ": " + tazo.getImageUrl());
         }
