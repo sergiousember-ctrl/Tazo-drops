@@ -1,0 +1,15 @@
+name: TazoDrops
+version: '${project.version}'
+main: com.tazos.plugin.TazosPlugin
+api-version: '1.21'
+author: Sergio
+description: Al matar arañas, hay probabilidad de soltar Tazos de Pokémon coleccionables.
+commands:
+  tazodrops:
+    description: Recarga la configuración de TazoDrops.
+    usage: /tazodrops reload
+    permission: tazodrops.admin
+permissions:
+  tazodrops.admin:
+    default: op
+
