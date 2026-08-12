@@ -1,5 +1,6 @@
 package com.tazos.plugin.listeners;
 
+import com.tazos.plugin.data.TazoDataManager;
 import com.tazos.plugin.items.Tazo;
 import com.tazos.plugin.items.TazoManager;
 import org.bukkit.ChatColor;
@@ -19,10 +20,12 @@ public class SpiderDeathListener implements Listener {
 
     private final JavaPlugin plugin;
     private final TazoManager tazoManager;
+    private final TazoDataManager dataManager;
 
-    public SpiderDeathListener(JavaPlugin plugin, TazoManager tazoManager) {
+    public SpiderDeathListener(JavaPlugin plugin, TazoManager tazoManager, TazoDataManager dataManager) {
         this.plugin = plugin;
         this.tazoManager = tazoManager;
+        this.dataManager = dataManager;
     }
 
     @EventHandler
@@ -46,6 +49,7 @@ public class SpiderDeathListener implements Listener {
         if (tazo == null) return;
 
         ItemStack tazoItem = tazoManager.createTazoItem(tazo);
+        dataManager.addCollected(killer, tazo.getId());
 
         if (plugin.getConfig().getBoolean("give-directly", true)) {
             Map<Integer, ItemStack> leftover = killer.getInventory().addItem(tazoItem);
@@ -57,6 +61,3 @@ public class SpiderDeathListener implements Listener {
         String message = plugin.getConfig().getString("win-message", "&6¡Obtuviste un Tazo #%id% - %name%!")
                 .replace("%id%", String.valueOf(tazo.getId()))
                 .replace("%name%", tazo.getName());
-        killer.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
-    }
-}
