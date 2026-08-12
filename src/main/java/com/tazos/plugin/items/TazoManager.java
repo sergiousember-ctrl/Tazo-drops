@@ -56,6 +56,9 @@ public class TazoManager {
     public int getTazoCount() {
         return tazos.size();
     }
+    public List<Tazo> getAllTazos() {
+        return tazos;
+    }
 
     public Tazo getRandomTazo() {
         if (tazos.isEmpty()) return null;
